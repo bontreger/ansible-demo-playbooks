@@ -1,0 +1,19 @@
+---
+- hosts: 192.168.122.234
+  vars:
+    bigip_username: admin
+    bigip_password: password
+    bigip_server: 192.168.122.234
+    certificate_name: demo_cert
+    certificate_content: ""
+  tasks:
+  - name: Import new Certificate
+    bigip_ssl_certificate:
+      name: "{{ certificate_name }}"
+      server: "{{ bigip_server }}"
+      user: "{{ bigip_username }}"
+      password: "{{ bigip_password }}"
+      state: present
+      content: "{{ certificate_content }}"
+    delegate_to: localhost
+...
