@@ -6,6 +6,7 @@
     bigip_server: 192.168.122.234
     certificate_name: demo_cert
     certificate_content: ""
+    cert_state: present
   tasks:
   - name: Import new Certificate
     bigip_ssl_certificate:
@@ -13,7 +14,7 @@
       server: "{{ bigip_server }}"
       user: "{{ bigip_username }}"
       password: "{{ bigip_password }}"
-      state: present
+      state: "{{ cert_state }}"
       content: "{{ certificate_content }}"
     delegate_to: localhost
 ...
